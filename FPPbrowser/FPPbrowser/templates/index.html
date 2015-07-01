@@ -12,11 +12,18 @@
 		<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
 		<script type="text/javascript" src="http://mpld3.github.io/js/mpld3.v0.1.js"></script>
 
-		<div id="fig01"></div>
+		<div id="figure"></div>
+		<form method="POST" action="/plot_w_options">
+			<select onchange="this.form.submit()" name='color_choice'>
+				<option selected="selected" value='default'>Select a color</option>
+				<option value='blue'>Blue</option>
+				<option value='red'>Red</option>
+			</select>
+		</form>
 
 		<script type="text/javascript">
-		  var json01 = {{ testvar|safe }}; // add jinja variable here
-		  mpld3.draw_figure("fig01", json01);
+		  var mplfig = {{ jsonfig|safe }}; // add jinja variable here
+		  mpld3.draw_figure("figure", mplfig);
 		</script>
 
 	</body>
