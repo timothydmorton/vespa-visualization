@@ -11,7 +11,7 @@
 </style>
 <div id="fig01"></div>
 <script type="text/javascript">
-  var json01 = { <snip JSON code> }; // add jinja variable here
+  var json01 = {{ testvar|safe }}; // add jinja variable here
   mpld3.draw_figure("fig01", json01);
 </script>
 
