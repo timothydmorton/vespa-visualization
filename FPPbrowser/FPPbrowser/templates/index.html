@@ -3,27 +3,57 @@
 
 	<head>
 		<meta charset="UTF-8">
+		
+		<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+		<script type="text/javascript" src="http://mpld3.github.io/js/mpld3.v0.1.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='scripts/main.js') }}"></script>
+
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
 		<title>Kepler False Positive Interactive Plotting Tool</title>
 
 	</head>
 
 	<body>
 
-		<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
-		<script type="text/javascript" src="http://mpld3.github.io/js/mpld3.v0.1.js"></script>
-
 		<div id="figure"></div>
-		<form method="POST" action="/plot_w_options">
-			<select onchange="this.form.submit()" name='color_choice'>
-				<option selected="selected" value='default'>Select a color</option>
-				<option value='blue'>Blue</option>
-				<option value='red'>Red</option>
-			</select>
+
+		<form id='optionsform' method='POST' action='/' autocomplete='on'>
+
+			<fieldset id='x_axis_fieldset'>
+				<label>X-axis</label>
+				<ul id='x_axis_ul'>
+					{% for each_op in data_options %}
+						<li>
+							<input type="checkbox" name="checkbox_x" onchange="form_validation()" id={{ each_op ~ "x" }} value={{ each_op }}>
+							<label for={{ each_op ~ "x" }}>{{ each_op }}</label>
+						</li>
+					{% endfor %}
+				</ul>
+			</fieldset>
+
+			<fieldset id='y_axis_fieldset'>
+				<label>Y-axis</label>
+				<ul id='y_axis_ul'>
+					{% for each_op in data_options %}
+						<li>
+							<input type="checkbox" name="checkbox_y" onchange="form_validation()" id={{ each_op ~ "y" }} value={{ each_op }}>
+							<label for={{ each_op ~ "y" }}>{{ each_op }}</label>
+						</li>
+					{% endfor %}
+				</ul>
+			</fieldset>
+
 		</form>
 
 		<script type="text/javascript">
 		  var mplfig = {{ jsonfig|safe }}; // add jinja variable here
 		  mpld3.draw_figure("figure", mplfig);
+		</script>
+
+		<script type="text/javascript">
+			form_reload({{ f_x|safe }},{{ f_y|safe }});
 		</script>
 
 	</body>

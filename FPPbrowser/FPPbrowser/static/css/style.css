@@ -1,0 +1,24 @@
+html, body {
+	font-family: "Garamond";
+}
+
+#figure {
+	width: 700px;
+	height: 700px;
+	float: left;
+}
+
+#x_axis_fieldset {
+	width: 200px;
+	height: 500px;
+	float: left;
+	overflow-y: scroll;
+}
+
+#y_axis_fieldset {
+	width: 200px;
+	height: 500px;
+	float: left;
+	overflow-y: scroll;
+}
+
