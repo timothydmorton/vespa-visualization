@@ -1,4 +1,4 @@
-from FPPbrowser import app, forms
+from FPPbrowser import app#, forms
 from flask import render_template, request, jsonify
 from matplotlib import pyplot as plt
 
