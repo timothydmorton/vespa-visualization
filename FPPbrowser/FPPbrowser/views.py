@@ -38,6 +38,6 @@ def plot_data():
 
 	# Plot data and convert to JSON
 	ax.plot(x,y,marker='.',lw=0)
-	jsonfig = json.dumps(mpld3.fig_to_dict(fig))
-	return render_template('index.html', data_options=data_options, jsonfig=jsonfig)
-	# return jsonfig
+	jsonfig = jsonify(mpld3.fig_to_dict(fig))
+	# return render_template('index.html', data_options=data_options, jsonfig=jsonfig)
+	return jsonfig
