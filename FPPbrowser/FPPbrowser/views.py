@@ -1,6 +1,9 @@
 from FPPbrowser import app, forms
 from flask import render_template, request, jsonify
 from matplotlib import pyplot as plt
+from bokeh import plotting as bkplt
+from bokeh.embed import file_html, components
+from bokeh.resources import CDN
 
 import numpy as np
 import vespa
@@ -14,13 +17,14 @@ for each_key in starpop.stars.keys():
 		data_options.append(each_key)
 
 # Create empty pyplot figure
-fig = plt.figure()
-ax = fig.add_subplot(111)
+fig = bkplt.figure()
 
 @app.route('/')
 def index():
-	jsonfig = json.dumps(mpld3.fig_to_dict(fig))
-	return render_template('index.html', data_options=data_options, jsonfig=jsonfig)
+	# jsonfig = json.dumps(mpld3.fig_to_dict(fig))
+	# return render_template('index.html', data_options=data_options, jsonfig=jsonfig)
+	script, div = components(fig, CDN)
+	return render_template('index.html', data_options=data_options, script=script, div=div)
 
 @app.route('/_plot_data', methods=['POST','GET'])
 def plot_data():
@@ -33,11 +37,11 @@ def plot_data():
 	x = starpop[x_pick]
 	y = starpop[y_pick]
 
-	ax.set_xlabel(x_pick)
-	ax.set_ylabel(y_pick)
+	fig.xaxis.axis_label = x_pick
+	fig.yaxis.axis_label = y_pick
 
 	# Plot data and convert to JSON
-	ax.plot(x,y,marker='.',lw=0)
-	jsonfig = jsonify(mpld3.fig_to_dict(fig))
+	script, div = components(fig, CDN)
+	# jsonfig = jsonify(mpld3.fig_to_dict(fig))
 	# return render_template('index.html', data_options=data_options, jsonfig=jsonfig)
-	return jsonfig
+	return div

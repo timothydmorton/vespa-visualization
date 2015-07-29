@@ -23,22 +23,66 @@
 // 	}
 // }
 
-$("#clear").click(function() {
-	$("input[type=checkbox]").removeAttr("checked");
+// $("#clear").click(function() {
+// 	$("input[type=checkbox]").removeAttr("checked");
+// });
+
+// function form_validation() {
+// 	var checked_values = $('input[name="checkbox_data"]:checked').map(
+// 		function() {
+// 			return this.value;
+// 		}).get();
+
+// 	if (checked_values.length > 1) {
+// 		// document.getElementById('optionsform').submit();
+
+// 		// $.get('/_plot_data', function( jsonfig ) {
+// 		//		 mpld3.draw_figure("figure", jsonfig);
+// 		// });
+// 		$.get('/_plot_data', function( scriptdiv ) {
+// 				document.write(scriptdiv);
+// 				document.write('div2');
+// 		});
+// 	}
+// 	// mpld3.draw_figure("figure", jsonfig);
+// }
+
+$(function () {
+	$('#FPP_tab, #stars_tab').click(function () {
+		if ($('#FPP_input').is(':checked')) {
+			$('#stars_tab').children('div').hide();
+			$('#FPP_tab').children('div').show();
+		} else if ($('#stars_input').is(':checked')) {
+			$('#FPP_tab').children('div').hide();
+			$('#stars_tab').children('div').show();
+		}
+	})
 });
 
-function form_validation() {
-	var checked_values = $('input[name="checkbox_data"]:checked').map(
-		function() {
-			return this.value;
-		}).get();
+$(function () {
+	$('#bottom-right').click(function () {
+		if ($('#pl').is(':checked')) {
+			$('#pl_div').show();
+			$('#eb_div').hide();
+			$('#beb_div').hide();
+			$('#heb_div').hide();
+		} else if ($('#eb').is(':checked')) {
+			$('#pl_div').hide();
+			$('#eb_div').show();
+			$('#beb_div').hide();
+			$('#heb_div').hide();
+		} else if ($('#beb').is(':checked')) {
+			$('#pl_div').hide();
+			$('#eb_div').hide();
+			$('#beb_div').show();
+			$('#heb_div').hide();
+		} else if ($('#heb').is(':checked')) {
+			$('#pl_div').hide();
+			$('#eb_div').hide();
+			$('#beb_div').hide();
+			$('#heb_div').show();
+		}
+	})
+});
 
-	if (checked_values.length > 1) {
-		// document.getElementById('optionsform').submit();
-
-		$.get('/_plot_data', function( jsonfig ) {
-		    mpld3.draw_figure("figure", jsonfig);
-		});
-	}
-	// mpld3.draw_figure("figure", jsonfig);
-}
+$('#top-right input[type=radio]').hide()

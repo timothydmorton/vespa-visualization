@@ -5,6 +5,7 @@
 		<meta charset="UTF-8">
 
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
 		<title>Kepler False Positive Interactive Plotting Tool</title>
 
@@ -14,23 +15,86 @@
 
 		<div id="figure"></div>
 
-		<form id='optionsform' method='POST' action='/_plot_data'>
+		<div id="form-wrapper">
+			<div id="top">
+				<div id="top-left">
+					<form id='optionsform' method='POST' action='/_plot_data'>
+						<div id="KOIinput-label">
+							<label for="KOIinput">KOI: </label>
+							<input id="KOIinput">
+							<span id="clear">
+								Clear
+							</span>
+						</div>
+						<fieldset id="data_options">
+							<label>Data Options</label>
+							<ul>
+								{% for each_op in data_options %}
+									<li>
+										<input type="checkbox" name="checkbox_data" onchange="form_validation()" id="{{ each_op }}" value="{{ each_op }}">
+										<label for="{{ each_op }}">{{ each_op }}</label>
+									</li>
+								{% endfor %}
+							</ul>
+						</fieldset>
+					</form>
+				</div>
 
-			<fieldset id="data_options">
-				<label>Data Options</label>
-				<ul>
-					{% for each_op in data_options %}
-						<li>
-							<input type="checkbox" name="checkbox_data" onchange="form_validation()" id="{{ each_op }}" value="{{ each_op }}">
-							<label for="{{ each_op }}">{{ each_op }}</label>
+				<div id="top-right">
+					<ul id="tabs">
+
+						<li id="FPP_tab">
+							<input id="FPP_input" name="top-right" type="radio" checked />
+					        <label for="FPP_input">FPP</label>
+					        <div style="background:red">
+								<img src="{{ url_for('static', filename='fpp/K07016.01/FPPsummary.png') }}">
+							</div>
 						</li>
-					{% endfor %}
-				</ul>
-			</fieldset>
-			<div id="clear">
-				Clear
+
+						<li id="stars_tab">
+							<input id="stars_input" name="top-right" type="radio" />
+					        <label for="stars_input">Stars</label>
+					        <div>
+					        	<img src="{{ url_for('static', filename='fpp/K07016.01/FPPsummary.png') }}">
+				        	</div>
+						</li>
+
+					<ul>
+				</div>
 			</div>
-		</form>
+
+			<div id="bottom">
+				<div id="bottom-left">
+					<img src="{{ url_for('static', filename='fpp/K07016.01/signal.png') }}">
+				</div>
+
+				<div id="bottom-right">
+					<div id="pl_div">
+						<img src="{{ url_for('static', filename='fpp/K07016.01/pl.png') }}">
+					</div>
+
+					<div id="eb_div">
+						<img src="{{ url_for('static', filename='fpp/K07016.01/eb.png') }}">
+					</div>
+
+					<div id="beb_div">
+						<img src="{{ url_for('static', filename='fpp/K07016.01/beb.png') }}">
+					</div>
+
+					<div id="heb_div">
+						<img src="{{ url_for('static', filename='fpp/K07016.01/heb.png') }}">
+					</div>
+					<input name="bottom-right" id="pl" type="radio" checked>
+					<label for="pl">Pl</label>
+					<input name="bottom-right" id="eb" type="radio">
+					<label for="eb">EB</label>
+					<input name="bottom-right" id="beb" type="radio">
+					<label for="beb">BEB</label>
+					<input name="bottom-right" id="heb" type="radio">
+					<label for="heb">HEB</label>
+				</div>
+			</div>
+		</div>
 
 		<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
 		<script type="text/javascript" src="http://mpld3.github.io/js/mpld3.v0.1.js"></script>

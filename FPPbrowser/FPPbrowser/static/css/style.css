@@ -1,16 +1,99 @@
 html, body {
-	font-family: "Garamond";
+	font-family: "Open Sans";
 }
 
-#figure {
+#figure {/*
 	width: 700px;
 	height: 700px;
-	float: left;
+	float: left;*/
 }
 
 #data_options {
 	width: 200px;
-	height: 500px;
+	height: 200px;
 	float: left;
 	overflow-y: scroll;
 }
+
+#KOIinput-label {
+	text-align: center;
+}
+
+#top-left {
+	padding: 5px;
+	float:left;
+	background-color: green;
+}
+
+#top-right {
+	padding: 20px;
+	width: 800px;
+	float:right;
+	background-color: yellow;
+}
+
+#top-right img {
+   /*height: 100%;*/
+   width: 100px;
+ }
+
+#bottom-left {
+	padding: 20px;
+	width: 400px;
+	float: left;
+	background-color: red;
+}
+
+#bottom-left img {
+   height: 100%;
+   width: 100%;
+ }
+
+#bottom-right {
+	padding: 20px;
+	width: 400px;
+	float: right;
+	background-color: blue;
+}
+
+#bottom-right img {
+   height: 100%;
+   width: 100%;
+ }
+
+ #FPP_options {
+
+ }
+
+ #form-wrapper {
+
+ }
+
+ #bottom {
+ 	padding-top: 300px;
+ }
+
+ #tabs label {
+ 	width: 100%;
+ 	background-color: green;
+ }
+
+ #FPP_tab {
+ 	float:left;
+ }
+
+ #stars_tab div {
+ 	display: none;
+ }
+
+ #eb_div {
+ 	display: none;
+ }
+
+ #beb_div {
+ 	display: none;
+ }
+
+ #heb_div {
+ 	display: none;
+ }
