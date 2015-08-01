@@ -1,5 +1,8 @@
 html, body {
 	font-family: "Open Sans";
+	height: 100%;
+	margin: 0;
+	padding: 5px;
 }
 
 #figure {/*
@@ -8,92 +11,173 @@ html, body {
 	float: left;*/
 }
 
-#data_options {
+/*#data_options {
 	width: 200px;
 	height: 200px;
 	float: left;
 	overflow-y: scroll;
+}*/
+
+#form-wrapper {
+	height: 100%;
+}
+
+#left {
+	float:left;
+
+	width: 600px;
+	height: 100%;
+}
+
+#optionsform {
+	margin-bottom: 60px;
 }
 
 #KOIinput-label {
-	text-align: center;
+	/*padding: 5px;*/
 }
 
-#top-left {
-	padding: 5px;
-	float:left;
-	background-color: green;
+#right {
+	width: 560px;
+	float: right;
+}
+
+#right img {
+	width: 100%;
 }
 
 #top-right {
-	padding: 20px;
-	width: 800px;
-	float:right;
-	background-color: yellow;
+	height: 300px;
+	border: 2px solid black;
 }
 
 #top-right img {
-   /*height: 100%;*/
-   width: 100px;
- }
-
-#bottom-left {
-	padding: 20px;
-	width: 400px;
-	float: left;
-	background-color: red;
+	height: 100%;
 }
-
-#bottom-left img {
-   height: 100%;
-   width: 100%;
- }
 
 #bottom-right {
-	padding: 20px;
-	width: 400px;
-	float: right;
-	background-color: blue;
+	margin-top: 15px;
 }
 
-#bottom-right img {
-   height: 100%;
-   width: 100%;
- }
+#bottom_right_tabs {
+	float: left;
+	width: 50px;
+}
 
- #FPP_options {
+#bottom_right_tabs li {
+	min-height: 93.4px;
+	border-left: 2px solid black;
+	border-top: 2px solid black;
+	border-bottom: 2px solid black;
+	border-right: 0;
+	text-align: center;
+}
 
- }
+#bottom_right_images {
+	border-right: 2px solid black;
+	border-bottom: 2px solid black;
+	border-top: 2px solid black;
+	overflow: hidden;
+}
 
- #form-wrapper {
+#bottom_right_images img {
+	height: 100%;
+}
 
- }
+#form-wrapper {
+	margin: 0;
+}
 
- #bottom {
- 	padding-top: 300px;
- }
 
- #tabs label {
- 	width: 100%;
- 	background-color: green;
- }
+.tabs {
+	margin: 0;
+	padding: 0;
+	/*list-style-type: none;*/
+}
 
- #FPP_tab {
- 	float:left;
- }
+.tabs ul {
+	margin: 0;
+	padding: 0;
 
- #stars_tab div {
- 	display: none;
- }
+	list-style: none;
+}
 
- #eb_div {
- 	display: none;
- }
+.tabs li {
+	cursor: pointer;
+	border: 2px solid black;
+	margin: 0;
+}
 
- #beb_div {
- 	display: none;
- }
+#FPP_tab {
+	background-color: white;
+	color: black;
+}
 
- #heb_div {
- 	display: none;
- }
+#stars_tab {
+	background-color: black;
+	color: white;
+}
+
+#FPP_stars_tabs li{
+	display: inline;
+	border-bottom-width: 0;
+	padding: 0 5px 2px;
+}
+
+#FPP_stars_images {
+	border: 2px black solid;
+	height: 600px;
+	/*height: 100%;*/
+}
+
+#FPP_stars_images img{
+	width: 100%;
+}
+
+#EB_img {
+	display: none;
+}
+
+#BEB_img {
+	display: none;
+}
+
+#HEB_img {
+	display: none;
+}
+
+#stars_img {
+	display: none;
+}
+
+#Pl_tab{
+	background-color: white;
+	color: black;
+}
+
+#EB_tab{
+	background-color: black;
+	color: white;
+}
+
+#BEB_tab{
+	background-color: black;
+	color: white;
+}
+
+#HEB_tab{
+	background-color: black;
+	color: white;
+}
+
+#singleStarImg {
+	display: none;
+}
+
+#doubleStarImg {
+	display: none;
+}
+
+#tripleStarImg {
+	display: none;
+}

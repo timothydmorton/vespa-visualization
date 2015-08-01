@@ -36,51 +36,138 @@
 // 	if (checked_values.length > 1) {
 // 		// document.getElementById('optionsform').submit();
 
-// 		// $.get('/_plot_data', function( jsonfig ) {
-// 		//		 mpld3.draw_figure("figure", jsonfig);
+// 		// $.get('/_Plot_data', function( jsonfig ) {
+// 		//		 mPld3.draw_figure("figure", jsonfig);
 // 		// });
-// 		$.get('/_plot_data', function( scriptdiv ) {
+// 		$.get('/_Plot_data', function( scriptdiv ) {
 // 				document.write(scriptdiv);
 // 				document.write('div2');
 // 		});
 // 	}
-// 	// mpld3.draw_figure("figure", jsonfig);
+// 	// mPld3.draw_figure("figure", jsonfig);
 // }
 
-$(function () {
-	$('#FPP_tab, #stars_tab').click(function () {
-		if ($('#FPP_input').is(':checked')) {
-			$('#stars_tab').children('div').hide();
-			$('#FPP_tab').children('div').show();
-		} else if ($('#stars_input').is(':checked')) {
-			$('#FPP_tab').children('div').hide();
-			$('#stars_tab').children('div').show();
-		}
-	})
-});
+$('#FPP_tab').click(function () {
+	$('#FPP_img').show();
+	$('.stars_img').hide();
+	$('#FPP_tab').css({
+		'background-color':'white',
+		'color':'black'
+		});
+	$('#stars_tab').css({
+		'background-color':'black',
+		'color':'white'
+		});
+	});
+
+$('#stars_tab').click(function () {
+	$('.stars_img').show();
+	$('#FPP_img').hide();
+	$('#stars_tab').css({
+		'background-color':'white',
+		'color':'black'
+		});
+	$('#FPP_tab').css({
+		'background-color':'black',
+		'color':'white'
+		});
+	if ($('#singleStar').is(':checked')) {
+		$('#singleStarImg').show();
+		$('#doubleStarImg').hide();
+		$('#tripleStarImg').hide();
+	} else if ($('#doubleStar').is(':checked')) {
+		$('#singleStarImg').hide();
+		$('#doubleStarImg').show();
+		$('#tripleStarImg').hide();
+	} else if ($('#tripleStar').is(':checked')) {
+		$('#singleStarImg').hide();
+		$('#doubleStarImg').hide();
+		$('#tripleStarImg').show();
+	}
+	});
+
+$('#Pl_tab').click(function () {
+	$('#Pl_img').show();
+	$('#EB_img').hide();
+	$('#BEB_img').hide();
+	$('#HEB_img').hide();
+	$('#Pl_tab').css({
+		'background-color':'white',
+		'color':'black',
+		});
+	$('#EB_tab, #BEB_tab, #HEB_tab').css({
+		'background-color':'black',
+		'color':'white'
+		});
+	});
+
+$('#EB_tab').click(function () {
+	$('#Pl_img').hide();
+	$('#EB_img').show();
+	$('#BEB_img').hide();
+	$('#HEB_img').hide();
+	$('#EB_tab').css({
+		'background-color':'white',
+		'color':'black'
+		});
+	$('#Pl_tab, #BEB_tab, #HEB_tab').css({
+		'background-color':'black',
+		'color':'white'
+		});
+	});
+
+$('#BEB_tab').click(function () {
+	$('#Pl_img').hide();
+	$('#EB_img').hide();
+	$('#BEB_img').show();
+	$('#HEB_img').hide();
+	$('#BEB_tab').css({
+		'background-color':'white',
+		'color':'black'
+		});
+	$('#Pl_tab, #EB_tab, #HEB_tab').css({
+		'background-color':'black',
+		'color':'white'
+		});
+	});
+
+$('#HEB_tab').click(function () {
+	$('#Pl_img').hide();
+	$('#EB_img').hide();
+	$('#BEB_img').hide();
+	$('#HEB_img').show();
+	$('#HEB_tab').css({
+		'background-color':'white',
+		'color':'black'
+		});
+	$('#Pl_tab, #EB_tab, #BEB_tab').css({
+		'background-color':'black',
+		'color':'white'
+		});
+	});
 
 $(function () {
 	$('#bottom-right').click(function () {
-		if ($('#pl').is(':checked')) {
-			$('#pl_div').show();
-			$('#eb_div').hide();
-			$('#beb_div').hide();
-			$('#heb_div').hide();
-		} else if ($('#eb').is(':checked')) {
-			$('#pl_div').hide();
-			$('#eb_div').show();
-			$('#beb_div').hide();
-			$('#heb_div').hide();
-		} else if ($('#beb').is(':checked')) {
-			$('#pl_div').hide();
-			$('#eb_div').hide();
-			$('#beb_div').show();
-			$('#heb_div').hide();
-		} else if ($('#heb').is(':checked')) {
-			$('#pl_div').hide();
-			$('#eb_div').hide();
-			$('#beb_div').hide();
-			$('#heb_div').show();
+		if ($('#Pl').is(':checked')) {
+			$('#Pl_div').show();
+			$('#EB_div').hide();
+			$('#BEB_div').hide();
+			$('#HEB_div').hide();
+		} else if ($('#EB').is(':checked')) {
+			$('#Pl_div').hide();
+			$('#EB_div').show();
+			$('#BEB_div').hide();
+			$('#HEB_div').hide();
+		} else if ($('#BEB').is(':checked')) {
+			$('#Pl_div').hide();
+			$('#EB_div').hide();
+			$('#BEB_div').show();
+			$('#HEB_div').hide();
+		} else if ($('#HEB').is(':checked')) {
+			$('#Pl_div').hide();
+			$('#EB_div').hide();
+			$('#BEB_div').hide();
+			$('#HEB_div').show();
 		}
 	})
 });

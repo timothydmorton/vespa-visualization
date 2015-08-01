@@ -16,82 +16,92 @@
 		<div id="figure"></div>
 
 		<div id="form-wrapper">
-			<div id="top">
-				<div id="top-left">
-					<form id='optionsform' method='POST' action='/_plot_data'>
-						<div id="KOIinput-label">
-							<label for="KOIinput">KOI: </label>
-							<input id="KOIinput">
-							<span id="clear">
-								Clear
-							</span>
-						</div>
-						<fieldset id="data_options">
-							<label>Data Options</label>
-							<ul>
-								{% for each_op in data_options %}
-									<li>
-										<input type="checkbox" name="checkbox_data" onchange="form_validation()" id="{{ each_op }}" value="{{ each_op }}">
-										<label for="{{ each_op }}">{{ each_op }}</label>
-									</li>
-								{% endfor %}
-							</ul>
-						</fieldset>
-					</form>
-				</div>
+			<div id="left">
+				<form id='optionsform' method='POST' action='/_plot_data'>
+					<div id="KOIinput-label">
+						<label for="KOIinput">KOI: </label>
+						<input id="KOIinput">
+						<span id="clear">
+							Clear
+						</span>
+					</div>
+					<!--
+					<fieldset id="data_options">
+						<label>Data Options</label>
+						<ul>
+							{% for each_op in data_options %}
+								<li>
+									<input type="checkbox" name="checkbox_data" onchange="form_validation()" id="{{ each_op }}" value="{{ each_op }}">
+									<label for="{{ each_op }}">{{ each_op }}</label>
+								</li>
+							{% endfor %}
+						</ul>
+					</fieldset> -->
+				</form>
 
-				<div id="top-right">
-					<ul id="tabs">
-
+				<div id="FPP_stars_tabs" class="tabs">
+ 					<ul>
 						<li id="FPP_tab">
-							<input id="FPP_input" name="top-right" type="radio" checked />
-					        <label for="FPP_input">FPP</label>
-					        <div style="background:red">
-								<img src="{{ url_for('static', filename='fpp/K07016.01/FPPsummary.png') }}">
-							</div>
+							FPP
 						</li>
 
 						<li id="stars_tab">
-							<input id="stars_input" name="top-right" type="radio" />
-					        <label for="stars_input">Stars</label>
-					        <div>
-					        	<img src="{{ url_for('static', filename='fpp/K07016.01/FPPsummary.png') }}">
-				        	</div>
+							Stars						
+							<input type="radio" name="starType" value="single" id="singleStar" checked>
+							<label for="singleStar">Single</label>
+							<input type="radio" name="starType" value="double" id="doubleStar">
+							<label for="doubleStar">Double</label>
+							<input type="radio" name="starType" value="triple" id="tripleStar">
+							<label for="tripleStar">Triple</label>
+													
 						</li>
 
-					<ul>
+					</ul>
 				</div>
+		        <div id="FPP_stars_images">
+					<img id="FPP_img" src="{{ url_for('static', filename='fpp/K07016.01/FPPsummary.png') }}">
+
+		        	<img class="stars_img" id="singleStarImg" src="{{ url_for('static', filename='fpp/K07016.01/dartmouth_triangle_single_observed.png') }}">
+
+		        	<img class="stars_img" id="doubleStarImg" src="{{ url_for('static', filename='fpp/K07016.01/dartmouth_triangle_binary_observed.png') }}">
+
+		        	<img class="stars_img" id="tripleStarImg" src="{{ url_for('static', filename='fpp/K07016.01/dartmouth_triangle_triple_observed.png') }}">
+	        	</div>
 			</div>
 
-			<div id="bottom">
-				<div id="bottom-left">
+			<div id="right">
+				<div id="top-right">
 					<img src="{{ url_for('static', filename='fpp/K07016.01/signal.png') }}">
 				</div>
 
 				<div id="bottom-right">
-					<div id="pl_div">
-						<img src="{{ url_for('static', filename='fpp/K07016.01/pl.png') }}">
-					</div>
+					<div id="bottom_right_tabs" class="tabs">
+	 					<ul>
 
-					<div id="eb_div">
-						<img src="{{ url_for('static', filename='fpp/K07016.01/eb.png') }}">
-					</div>
+							<li id="Pl_tab">
+								Pl
+							</li>
 
-					<div id="beb_div">
-						<img src="{{ url_for('static', filename='fpp/K07016.01/beb.png') }}">
-					</div>
+							<li id="EB_tab">
+								EB
+							</li>
 
-					<div id="heb_div">
-						<img src="{{ url_for('static', filename='fpp/K07016.01/heb.png') }}">
+							<li id="BEB_tab">
+								BEB
+							</li>
+
+							<li id="HEB_tab">
+								HEB
+							</li>
+
+						</ul>
 					</div>
-					<input name="bottom-right" id="pl" type="radio" checked>
-					<label for="pl">Pl</label>
-					<input name="bottom-right" id="eb" type="radio">
-					<label for="eb">EB</label>
-					<input name="bottom-right" id="beb" type="radio">
-					<label for="beb">BEB</label>
-					<input name="bottom-right" id="heb" type="radio">
-					<label for="heb">HEB</label>
+					<div id="bottom_right_images">
+						<img id="Pl_img" src="{{ url_for('static', filename='fpp/K07016.01/pl.png') }}">
+						<img id="EB_img" src="{{ url_for('static', filename='fpp/K07016.01/eb.png') }}">
+						<img id="BEB_img" src="{{ url_for('static', filename='fpp/K07016.01/beb.png') }}">
+						<img id="HEB_img" src="{{ url_for('static', filename='fpp/K07016.01/heb.png') }}">
+					</div>
 				</div>
 			</div>
 		</div>
