@@ -17,13 +17,17 @@
 
 		<div id="form-wrapper">
 			<div id="left">
-				<form id='optionsform' method='POST' action='/_plot_data'>
+				<form id='optionsform' action='/loadKOIData' method='POST'>
 					<div id="KOIinput-label">
 						<label for="KOIinput">KOI: </label>
-						<input id="KOIinput">
-						<span id="clear">
-							Clear
-						</span>
+						<select id="KOIinput" name="KOIinput">
+							{% for each_file in KOI_files %}
+								<option value={{ each_file }}>{{ each_file }}</option>
+							{% endfor %}
+						</select>
+						<span id="submit">Submit</span>
+						<input id="hiddenSubmit" type="submit" value="Submit" hidden>
+						<span id="clear">Clear</span>
 					</div>
 					<!--
 					<fieldset id="data_options">
@@ -42,65 +46,65 @@
 				<div id="FPP_stars_tabs" class="tabs">
  					<ul>
 						<li id="FPP_tab">
-							FPP
+							FPP Summary
 						</li>
 
 						<li id="stars_tab">
-							Stars						
+							<label id="dartmouthTriangle" class="pointer">Dartmouth Triangle Plots | </label>
+
 							<input type="radio" name="starType" value="single" id="singleStar" checked>
-							<label for="singleStar">Single</label>
+							<label for="singleStar" class="pointer">Single Star</label> | 
 							<input type="radio" name="starType" value="double" id="doubleStar">
-							<label for="doubleStar">Double</label>
+							<label for="doubleStar" class="pointer">Double Star</label> | 
 							<input type="radio" name="starType" value="triple" id="tripleStar">
-							<label for="tripleStar">Triple</label>
-													
+							<label for="tripleStar" class="pointer">Triple Star</label>
 						</li>
 
 					</ul>
 				</div>
 		        <div id="FPP_stars_images">
-					<img id="FPP_img" src="{{ url_for('static', filename='fpp/K07016.01/FPPsummary.png') }}">
+					<img id="FPP_img" src="{{ url_for('static', filename='fpp/')}}{{ KOI_filename }}/FPPsummary.png">
 
-		        	<img class="stars_img" id="singleStarImg" src="{{ url_for('static', filename='fpp/K07016.01/dartmouth_triangle_single_observed.png') }}">
+		        	<img class="stars_img" id="singleStarImg" src="{{ url_for('static', filename='fpp/')}}{{ KOI_filename }}/dartmouth_triangle_single_observed.png">
 
-		        	<img class="stars_img" id="doubleStarImg" src="{{ url_for('static', filename='fpp/K07016.01/dartmouth_triangle_binary_observed.png') }}">
+		        	<img class="stars_img" id="doubleStarImg" src="{{ url_for('static', filename='fpp/')}}{{ KOI_filename }}/dartmouth_triangle_binary_observed.png">
 
-		        	<img class="stars_img" id="tripleStarImg" src="{{ url_for('static', filename='fpp/K07016.01/dartmouth_triangle_triple_observed.png') }}">
+		        	<img class="stars_img" id="tripleStarImg" src="{{ url_for('static', filename='fpp/')}}{{ KOI_filename }}/dartmouth_triangle_triple_observed.png">
 	        	</div>
 			</div>
 
 			<div id="right">
 				<div id="top-right">
-					<img src="{{ url_for('static', filename='fpp/K07016.01/signal.png') }}">
+					<img src="{{ url_for('static', filename='fpp/')}}{{ KOI_filename }}/signal.png">
 				</div>
 
 				<div id="bottom-right">
 					<div id="bottom_right_tabs" class="tabs">
 	 					<ul>
 
-							<li id="Pl_tab">
+							<li id="Pl_tab" class="pointer">
 								Pl
 							</li>
 
-							<li id="EB_tab">
+							<li id="EB_tab" class="pointer">
 								EB
 							</li>
 
-							<li id="BEB_tab">
+							<li id="BEB_tab" class="pointer">
 								BEB
 							</li>
 
-							<li id="HEB_tab">
+							<li id="HEB_tab" class="pointer">
 								HEB
 							</li>
 
 						</ul>
 					</div>
 					<div id="bottom_right_images">
-						<img id="Pl_img" src="{{ url_for('static', filename='fpp/K07016.01/pl.png') }}">
-						<img id="EB_img" src="{{ url_for('static', filename='fpp/K07016.01/eb.png') }}">
-						<img id="BEB_img" src="{{ url_for('static', filename='fpp/K07016.01/beb.png') }}">
-						<img id="HEB_img" src="{{ url_for('static', filename='fpp/K07016.01/heb.png') }}">
+						<img id="Pl_img" src="{{ url_for('static', filename='fpp/')}}{{ KOI_filename }}/pl.png">
+						<img id="EB_img" src="{{ url_for('static', filename='fpp/')}}{{ KOI_filename }}/eb.png">
+						<img id="BEB_img" src="{{ url_for('static', filename='fpp/')}}{{ KOI_filename }}/beb.png">
+						<img id="HEB_img" src="{{ url_for('static', filename='fpp/')}}{{ KOI_filename }}/heb.png">
 					</div>
 				</div>
 			</div>

@@ -47,18 +47,24 @@
 // 	// mPld3.draw_figure("figure", jsonfig);
 // }
 
+
+$('#stars_tab input[type=radio]').hide()
+
+$('#top-right input[type=radio]').hide()
+
 $('#FPP_tab').click(function () {
 	$('#FPP_img').show();
 	$('.stars_img').hide();
 	$('#FPP_tab').css({
 		'background-color':'white',
 		'color':'black'
-		});
+	});
 	$('#stars_tab').css({
 		'background-color':'black',
 		'color':'white'
-		});
 	});
+	$('label[for="singleStar"], label[for="doubleStar"], label[for="tripleStar"]').css('color', 'white');
+});
 
 $('#stars_tab').click(function () {
 	$('.stars_img').show();
@@ -66,25 +72,31 @@ $('#stars_tab').click(function () {
 	$('#stars_tab').css({
 		'background-color':'white',
 		'color':'black'
-		});
+	});
 	$('#FPP_tab').css({
 		'background-color':'black',
 		'color':'white'
-		});
+	});
 	if ($('#singleStar').is(':checked')) {
+		$('label[for="singleStar"]').css('color', 'red');
+		$('label[for="doubleStar"],label[for="tripleStar"]').css('color', 'black');
 		$('#singleStarImg').show();
 		$('#doubleStarImg').hide();
 		$('#tripleStarImg').hide();
 	} else if ($('#doubleStar').is(':checked')) {
+		$('label[for="doubleStar"]').css('color', 'red');
+		$('label[for="singleStar"],label[for="tripleStar"]').css('color', 'black');
 		$('#singleStarImg').hide();
 		$('#doubleStarImg').show();
 		$('#tripleStarImg').hide();
 	} else if ($('#tripleStar').is(':checked')) {
+		$('label[for="tripleStar"]').css('color', 'red');
+		$('label[for="singleStar"],label[for="doubleStar"]').css('color', 'black');
 		$('#singleStarImg').hide();
 		$('#doubleStarImg').hide();
 		$('#tripleStarImg').show();
 	}
-	});
+});
 
 $('#Pl_tab').click(function () {
 	$('#Pl_img').show();
@@ -94,12 +106,12 @@ $('#Pl_tab').click(function () {
 	$('#Pl_tab').css({
 		'background-color':'white',
 		'color':'black',
-		});
+	});
 	$('#EB_tab, #BEB_tab, #HEB_tab').css({
 		'background-color':'black',
 		'color':'white'
-		});
 	});
+});
 
 $('#EB_tab').click(function () {
 	$('#Pl_img').hide();
@@ -109,12 +121,12 @@ $('#EB_tab').click(function () {
 	$('#EB_tab').css({
 		'background-color':'white',
 		'color':'black'
-		});
+	});
 	$('#Pl_tab, #BEB_tab, #HEB_tab').css({
 		'background-color':'black',
 		'color':'white'
-		});
 	});
+});
 
 $('#BEB_tab').click(function () {
 	$('#Pl_img').hide();
@@ -124,12 +136,12 @@ $('#BEB_tab').click(function () {
 	$('#BEB_tab').css({
 		'background-color':'white',
 		'color':'black'
-		});
+	});
 	$('#Pl_tab, #EB_tab, #HEB_tab').css({
 		'background-color':'black',
 		'color':'white'
-		});
 	});
+});
 
 $('#HEB_tab').click(function () {
 	$('#Pl_img').hide();
@@ -139,12 +151,12 @@ $('#HEB_tab').click(function () {
 	$('#HEB_tab').css({
 		'background-color':'white',
 		'color':'black'
-		});
+	});
 	$('#Pl_tab, #EB_tab, #BEB_tab').css({
 		'background-color':'black',
 		'color':'white'
-		});
 	});
+});
 
 $(function () {
 	$('#bottom-right').click(function () {
@@ -172,4 +184,6 @@ $(function () {
 	})
 });
 
-$('#top-right input[type=radio]').hide()
+$('#submit').click(function(){
+	$('#hiddenSubmit').trigger('click');
+});
