@@ -55,16 +55,8 @@ def plot_data():
 	# fig.xaxis.axis_label = x_pick
 	# fig.yaxis.axis_label = y_pick
 
-<<<<<<< HEAD
-	# Plot data and convert to JSON
-	ax.plot(x,y,marker='.',lw=0)
-	jsonfig = json.dumps(mpld3.fig_to_dict(fig))
-	return render_template('index.html', data_options=data_options, jsonfig=jsonfig)
-	# return jsonfig
-=======
 	# # Plot data and convert to JSON
 	# script, div = components(fig, CDN)
 	# # jsonfig = jsonify(mpld3.fig_to_dict(fig))
 	# # return render_template('index.html', data_options=data_options, jsonfig=jsonfig)
 	# return div
->>>>>>> 064940fb4e23a498e6694d798d5faf77295e5fa6
