@@ -6,7 +6,7 @@ from bokeh.embed import file_html, components
 from bokeh.resources import CDN
 
 import numpy as np
-import os
+import os, os.path
 # import vespa
 import json
 import mpld3
@@ -21,7 +21,8 @@ data_options = []
 fig = bkplt.figure()
 
 KOI_files = []
-KOI_filepath = '/Users/ganeshravichandran/Dropbox/Code/PrincetonResearch/vespa-visualization/FPPbrowser/FPPbrowser/static/fpp'
+curdir = os.path.dirname(__file__)
+KOI_filepath = os.path.join(curdir,'static','fpp')
 for each_file in os.listdir(KOI_filepath):
 	if each_file[0] != '.':
 		KOI_files.append(each_file)
