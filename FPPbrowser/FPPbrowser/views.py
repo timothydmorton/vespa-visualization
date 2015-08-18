@@ -1,4 +1,4 @@
-from FPPbrowser import app, forms
+from FPPbrowser import app
 from flask import render_template, request, jsonify, flash
 from matplotlib import pyplot as plt
 from bokeh import plotting as bkplt
