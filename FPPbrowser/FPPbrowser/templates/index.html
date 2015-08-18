@@ -5,6 +5,7 @@
 		<meta charset="UTF-8">
 
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
 		<title>Kepler False Positive Interactive Plotting Tool</title>
 
@@ -14,28 +15,105 @@
 
 		<div id="figure"></div>
 
-		<form id='optionsform' method='POST' action='/_plot_data'>
+		<div id="form-wrapper">
+			<div id="left">
+				<form id='optionsform' action='/loadKOIData' method='POST'>
+					<div id="KOIinput-label">
+						<label for="KOIinput">KOI: </label>
+						<select id="KOIinput" name="KOIinput">
+							{% for each_file in KOI_files %}
+								<option value={{ each_file }}>{{ each_file }}</option>
+							{% endfor %}
+						</select>
+						<span id="submit">Submit</span>
+						<input id="hiddenSubmit" type="submit" value="Submit" hidden>
+						<span id="clear">Clear</span>
+					</div>
+					<!--
+					<fieldset id="data_options">
+						<label>Data Options</label>
+						<ul>
+							{% for each_op in data_options %}
+								<li>
+									<input type="checkbox" name="checkbox_data" onchange="form_validation()" id="{{ each_op }}" value="{{ each_op }}">
+									<label for="{{ each_op }}">{{ each_op }}</label>
+								</li>
+							{% endfor %}
+						</ul>
+					</fieldset> -->
+				</form>
 
-			<fieldset id="data_options">
-				<label>Data Options</label>
-				<ul>
-					{% for each_op in data_options %}
-						<li>
-							<input type="checkbox" name="checkbox_data" onchange="form_validation()" id="{{ each_op }}" value="{{ each_op }}">
-							<label for="{{ each_op }}">{{ each_op }}</label>
+				<div id="FPP_stars_tabs" class="tabs">
+ 					<ul>
+						<li id="FPP_tab">
+							FPP Summary
 						</li>
-					{% endfor %}
-				</ul>
-			</fieldset>
 
-		</form>
+						<li id="stars_tab">
+							<label id="dartmouthTriangle" class="pointer">Dartmouth Triangle Plots | </label>
+
+							<input type="radio" name="starType" value="single" id="singleStar" checked>
+							<label for="singleStar" class="pointer">Single Star</label> | 
+							<input type="radio" name="starType" value="double" id="doubleStar">
+							<label for="doubleStar" class="pointer">Double Star</label> | 
+							<input type="radio" name="starType" value="triple" id="tripleStar">
+							<label for="tripleStar" class="pointer">Triple Star</label>
+						</li>
+
+					</ul>
+				</div>
+		        <div id="FPP_stars_images">
+					<img id="FPP_img" src="{{ url_for('static', filename='fpp/')}}{{ KOI_filename }}/FPPsummary.png">
+
+		        	<img class="stars_img" id="singleStarImg" src="{{ url_for('static', filename='fpp/')}}{{ KOI_filename }}/dartmouth_triangle_single_observed.png">
+
+		        	<img class="stars_img" id="doubleStarImg" src="{{ url_for('static', filename='fpp/')}}{{ KOI_filename }}/dartmouth_triangle_binary_observed.png">
+
+		        	<img class="stars_img" id="tripleStarImg" src="{{ url_for('static', filename='fpp/')}}{{ KOI_filename }}/dartmouth_triangle_triple_observed.png">
+	        	</div>
+			</div>
+
+			<div id="right">
+				<div id="top-right">
+					<img src="{{ url_for('static', filename='fpp/')}}{{ KOI_filename }}/signal.png">
+				</div>
+
+				<div id="bottom-right">
+					<div id="bottom_right_tabs" class="tabs">
+	 					<ul>
+
+							<li id="Pl_tab" class="pointer">
+								Pl
+							</li>
+
+							<li id="EB_tab" class="pointer">
+								EB
+							</li>
+
+							<li id="BEB_tab" class="pointer">
+								BEB
+							</li>
+
+							<li id="HEB_tab" class="pointer">
+								HEB
+							</li>
+
+						</ul>
+					</div>
+					<div id="bottom_right_images">
+						<img id="Pl_img" src="{{ url_for('static', filename='fpp/')}}{{ KOI_filename }}/pl.png">
+						<img id="EB_img" src="{{ url_for('static', filename='fpp/')}}{{ KOI_filename }}/eb.png">
+						<img id="BEB_img" src="{{ url_for('static', filename='fpp/')}}{{ KOI_filename }}/beb.png">
+						<img id="HEB_img" src="{{ url_for('static', filename='fpp/')}}{{ KOI_filename }}/heb.png">
+					</div>
+				</div>
+			</div>
+		</div>
 
 		<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
 		<script type="text/javascript" src="http://mpld3.github.io/js/mpld3.v0.1.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script type="text/javascript" src="{{ url_for('static', filename='scripts/main.js') }}"></script>
-
-		{{ jsonfig|safe }}
 
 	</body>
 

@@ -1,43 +1,70 @@
-from FPPbrowser import app#, forms
-from flask import render_template, request, jsonify
+from FPPbrowser import app, forms
+from flask import render_template, request, jsonify, flash
 from matplotlib import pyplot as plt
+from bokeh import plotting as bkplt
+from bokeh.embed import file_html, components
+from bokeh.resources import CDN
 
 import numpy as np
-import vespa
+import os
+# import vespa
 import json
 import mpld3
 
-starpop = vespa.MultipleStarPopulation(1)
+# starpop = vespa.MultipleStarPopulation(1)
 data_options = []
-for each_key in starpop.stars.keys():
-	if np.isfinite(getattr(starpop.stars,each_key)).any():
-		data_options.append(each_key)
+# for each_key in starpop.stars.keys():
+# 	if np.isfinite(getattr(starpop.stars,each_key)).any():
+# 		data_options.append(each_key)
 
 # Create empty pyplot figure
-fig = plt.figure()
-ax = fig.add_subplot(111)
+fig = bkplt.figure()
+
+KOI_files = []
+KOI_filepath = '/Users/ganeshravichandran/Dropbox/Code/PrincetonResearch/vespa-visualization/FPPbrowser/FPPbrowser/static/fpp'
+for each_file in os.listdir(KOI_filepath):
+	if each_file[0] != '.':
+		KOI_files.append(each_file)
 
 @app.route('/')
 def index():
-	jsonfig = json.dumps(mpld3.fig_to_dict(fig))
-	return render_template('index.html', data_options=data_options, jsonfig=jsonfig)
+	# jsonfig = json.dumps(mpld3.fig_to_dict(fig))
+	# return render_template('index.html', data_options=data_options, jsonfig=jsonfig)
+	script, div = components(fig, CDN)
+	return render_template('index.html', data_options=data_options, script=script, div=div, KOI_files=KOI_files)
 
-@app.route('/_plot_data', methods=['POST','GET'])
+@app.route('/loadKOIData', methods=['POST'])
+def load_KOIdata():
+
+	KOI_filename = request.form['KOIinput']
+	return render_template('index.html', KOI_filename=KOI_filename, KOI_files=KOI_files)
+
+@app.route('/_plot_data', methods=['POST'])
 def plot_data():
 
-	all_picks = request.args.getlist('checkbox_data')
+	data = request.form['KOIinput']
+	return render_template('index.html', data=data, KOI_files=KOI_files)
+	# all_picks = request.args.getlist('checkbox_data')
 
-	x_pick = 'H_mag'#str(all_picks[0])
-	y_pick = 'H_mag'#str(all_picks[1])
+	# x_pick = 'H_mag'#str(all_picks[0])
+	# y_pick = 'H_mag'#str(all_picks[1])
 
-	x = starpop[x_pick]
-	y = starpop[y_pick]
+	# x = starpop[x_pick]
+	# y = starpop[y_pick]
 
-	ax.set_xlabel(x_pick)
-	ax.set_ylabel(y_pick)
+	# fig.xaxis.axis_label = x_pick
+	# fig.yaxis.axis_label = y_pick
 
+<<<<<<< HEAD
 	# Plot data and convert to JSON
 	ax.plot(x,y,marker='.',lw=0)
 	jsonfig = json.dumps(mpld3.fig_to_dict(fig))
 	return render_template('index.html', data_options=data_options, jsonfig=jsonfig)
 	# return jsonfig
+=======
+	# # Plot data and convert to JSON
+	# script, div = components(fig, CDN)
+	# # jsonfig = jsonify(mpld3.fig_to_dict(fig))
+	# # return render_template('index.html', data_options=data_options, jsonfig=jsonfig)
+	# return div
+>>>>>>> 064940fb4e23a498e6694d798d5faf77295e5fa6

@@ -1,16 +1,196 @@
 html, body {
-	font-family: "Garamond";
+	font-family: "Open Sans";
+	font-size: 1vw;
+	height: 100%;
+	margin: 0;
+	padding: 0.4vw;
 }
 
-#figure {
+#figure {/*
 	width: 700px;
 	height: 700px;
-	float: left;
+	float: left;*/
 }
 
-#data_options {
+/*#data_options {
 	width: 200px;
-	height: 500px;
+	height: 200px;
 	float: left;
 	overflow-y: scroll;
+}*/
+
+#form-wrapper {
+	height: 100%;
+}
+
+#left {
+	float:left;
+
+	width: 50vw;
+	width: 50vw;
+}
+
+#optionsform {
+	margin-bottom: 60px;
+}
+
+#KOIinput-label {
+	/*padding: 5px;*/
+}
+
+#right {
+	width: 47vw;
+	float: right;
+}
+
+#right img {
+	width: 100%;
+}
+
+#top-right {
+	height: 25vw;
+	border: 0.17vw solid black;
+}
+
+#top-right img {
+	height: 100%;
+}
+
+#bottom-right {
+	margin-top: 1.25vw;
+}
+
+#bottom_right_tabs {
+	float: left;
+	width: 4.2vw;
+}
+
+#bottom_right_tabs li {
+	min-height: 7.8vw;
+	border-left: 0.17vw solid black;
+	border-top: 0.17vw solid black;
+	border-bottom: 0.17vw solid black;
+	border-right: 0;
+	text-align: center;
+}
+
+#bottom_right_images {
+	border-right: 0.17vw solid black;
+	border-bottom: 0.17vw solid black;
+	border-top: 0.17vw solid black;
+	overflow: hidden;
+}
+
+#bottom_right_images img {
+	height: 100%;
+}
+
+#form-wrapper {
+	margin: 0;
+}
+
+
+.tabs {
+	margin: 0;
+	padding: 0;
+	/*list-style-type: none;*/
+}
+
+.tabs ul {
+	margin: 0;
+	padding: 0;
+
+	list-style: none;
+}
+
+.tabs li {
+	border: 0.17vw solid black;
+	margin: 0;
+	display: block;
+}
+
+.pointer {
+	cursor: pointer;
+}
+
+#FPP_tab {
+	background-color: white;
+	color: black;
+}
+
+#stars_tab {
+	background-color: black;
+	color: white;
+}
+
+#FPP_stars_tabs li{
+	display: inline;
+	border-bottom-width: 0;
+	padding: 0 0.4vw 0.17vw;
+}
+
+#FPP_stars_images {
+	border: 0.17vw black solid;
+	height: 50vw;
+	/*height: 100%;*/
+}
+
+#FPP_stars_images img{
+	width: 100%;
+}
+
+#EB_img {
+	display: none;
+}
+
+#BEB_img {
+	display: none;
+}
+
+#HEB_img {
+	display: none;
+}
+
+#stars_img {
+	display: none;
+}
+
+#Pl_tab{
+	background-color: white;
+	color: black;
+}
+
+#EB_tab{
+	background-color: black;
+	color: white;
+}
+
+#BEB_tab{
+	background-color: black;
+	color: white;
+}
+
+#HEB_tab{
+	background-color: black;
+	color: white;
+}
+
+#singleStarImg {
+	display: none;
+}
+
+#doubleStarImg {
+	display: none;
+}
+
+#tripleStarImg {
+	display: none;
+}
+
+#clear {
+	cursor: pointer;
+}
+
+#submit {
+	cursor: pointer;
 }
